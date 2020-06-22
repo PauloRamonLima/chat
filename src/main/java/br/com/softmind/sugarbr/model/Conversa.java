@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,10 +28,11 @@ public class Conversa implements Serializable{
 	@Column(name = "conversa_id")
 	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "mensagem_id")
 	private List<Mensagem> mensagens;
 	
-	@ManyToMany
+	@ManyToMany()
 	private List<Usuario> usuario;
 
 	//Getters e Setters

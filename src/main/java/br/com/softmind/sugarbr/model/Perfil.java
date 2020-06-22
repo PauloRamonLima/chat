@@ -1,11 +1,12 @@
 package br.com.softmind.sugarbr.model;
 
-import java.awt.Image;
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,8 @@ public class Perfil implements Serializable {
 	private Usuario usuario;
 	
 	@Column(name = "perfil_fotos")
-	private List<Image> fotos;
+	@ElementCollection(targetClass = File.class)
+	private List<File> fotos;
 	
 	@Column(name = "perfil_descricao")
 	private String descricao;
@@ -68,11 +70,11 @@ public class Perfil implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public List<Image> getFotos() {
+	public List<File> getFotos() {
 		return fotos;
 	}
 
-	public void setFotos(List<Image> fotos) {
+	public void setFotos(List<File> fotos) {
 		this.fotos = fotos;
 	}
 

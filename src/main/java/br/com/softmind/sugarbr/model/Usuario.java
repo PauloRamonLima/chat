@@ -48,9 +48,9 @@ public class Usuario implements Serializable {
 	private TipoUsuario tipoUsuario;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name = "usuario_conversas", joinColumns = {
-			@JoinColumn(name = "usuario_id", referencedColumnName = "id") }, inverseJoinColumns = {
-					@JoinColumn(name = "perfil_id", referencedColumnName = "id") })
+	@JoinTable(name = "usuario_perfil", joinColumns = {
+			@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id") }, inverseJoinColumns = {
+					@JoinColumn(name = "perfil_id", referencedColumnName = "perfil_id") })
 	private Perfil perfil;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -58,8 +58,8 @@ public class Usuario implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "usuario_conversas", joinColumns = {
-			@JoinColumn(name = "usuario_id", referencedColumnName = "id") }, inverseJoinColumns = {
-					@JoinColumn(name = "endereco_id", referencedColumnName = "id") })
+			@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id") }, inverseJoinColumns = {
+					@JoinColumn(name = "endereco_id", referencedColumnName = "endereco_id") })
 	private Endereco endereco;
 
 	//Getters And Setters

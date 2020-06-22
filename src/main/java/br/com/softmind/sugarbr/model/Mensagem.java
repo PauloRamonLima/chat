@@ -24,19 +24,19 @@ public class Mensagem implements Serializable {
 	@Column(name = "mensagem_id")
 	private Long id;
 	
-	@Column(name = "mensagem")
-	private String mensagem;
+	@Column(name = "mensagem_valor")
+	private String valor;
 	
 	@Column(name = "mensagem_tipo")
 	private String tipo;
 	
-	@OneToOne(mappedBy = "conversa_id")
+	@OneToOne()
 	private Conversa conversa;
 	
-	@OneToOne(mappedBy = "usuario_id")
+	@OneToOne()
 	private Usuario usuarioMensagemEnviada;
 	
-	@OneToOne(mappedBy = "usuario_id")
+	@OneToOne()
 	private Usuario usuarioMensagemRecebida;
 	
 	@Column(name = "mensagem_date")
@@ -48,14 +48,6 @@ public class Mensagem implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getMensagem() {
-		return mensagem;
-	}
-
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
 	}
 
 	public Conversa getConversa() {
@@ -96,6 +88,14 @@ public class Mensagem implements Serializable {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 }

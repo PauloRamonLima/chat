@@ -2,7 +2,13 @@ package br.com.softmind.sugarbr.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,14 +17,23 @@ public class Endereco implements Serializable{
 
 	private static final long serialVersionUID = -2442472125219782764L;
 	
+	@Id
+	@SequenceGenerator(name = "endereco_GENERATION", sequenceName = "endereco_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_GENERATION")
+	@Column(name = "endereco_id")
 	private Long id;
 	
+	//@Column(name = "endereco_usuario")
+	@OneToOne()
 	private Usuario usuario;
 	
+	@Column(name = "endereco_pais")
 	private String pais;
 	
+	@Column(name = "endereco_estado")
 	private String estado;
 	
+	@Column(name = "endereco_cidade")
 	private String cidade;
 
 	public Long getId() {
@@ -60,6 +75,5 @@ public class Endereco implements Serializable{
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	
 	
 }
