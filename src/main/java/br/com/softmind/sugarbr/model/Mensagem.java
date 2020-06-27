@@ -42,6 +42,12 @@ public class Mensagem implements Serializable {
 	@Column(name = "mensagem_date")
 	private Date date;
 
+	public Mensagem() {
+		
+	}
+	
+	// Getter e Setter
+	
 	public Long getId() {
 		return id;
 	}

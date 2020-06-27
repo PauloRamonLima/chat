@@ -31,6 +31,12 @@ public class Usuario implements Serializable {
 
 	@Column(name = "usuario_nome", nullable = false)
 	private String nome;
+	
+	@Column(name = "usuario_login")
+	private String login;
+	
+	@Column(name = "usuario_senha")
+	private String senha;
 
 	@Column(name = "usuario_idade")
 	private Integer idade;
@@ -62,6 +68,10 @@ public class Usuario implements Serializable {
 					@JoinColumn(name = "endereco_id", referencedColumnName = "endereco_id") })
 	private Endereco endereco;
 
+	public Usuario() {
+		
+	}
+	
 	//Getters And Setters
 	
 	public Long getId() {
@@ -142,6 +152,22 @@ public class Usuario implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

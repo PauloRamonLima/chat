@@ -52,6 +52,10 @@ public class Perfil implements Serializable {
 	@Column(name = "perfil_qtdFilhos")
 	private int qtdFilhos;
 
+	public Perfil() {
+		
+	}
+	
 	//Getters e Setters
 	
 	public Long getId() {
