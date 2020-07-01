@@ -20,11 +20,8 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	@Transactional
-	public Usuario buscarPorId(Long id) throws ObjectNotFoundException {
+	public Usuario buscarPorId(Long id) {
 		Usuario usuario = usuarioRepository.findById(id).orElse(null);
-		if (usuario == null) {
-			throw new ObjectNotFoundException("Objeto Não Encontrado! id: " + id);
-		}
 		return usuario;
 	}
 	
@@ -60,5 +57,4 @@ public class UsuarioService {
 		PageRequest pageRequest = PageRequest.of(pagina, linhasPorPagina, Direction.valueOf(direcao), ordem);  
 		return usuarioRepository.findAll(pageRequest);
 	}
-	
 }

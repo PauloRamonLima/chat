@@ -3,6 +3,8 @@ package br.com.softmind.sugarbr.resource;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ public class UsuarioResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> inserir(@RequestBody Usuario usuario){
+	public ResponseEntity<Void> inserir(@Valid @RequestBody Usuario usuario){
 		usuario = usuarioService.salvar(usuario);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(usuario.getId()).toUri();

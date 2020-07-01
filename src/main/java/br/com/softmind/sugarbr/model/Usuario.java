@@ -16,6 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 
 @Entity
 @Table(name = "t.usuario")
@@ -29,7 +33,9 @@ public class Usuario implements Serializable {
 	@Column(name = "usuario_id")
 	private Long id;
 
-	@Column(name = "usuario_nome", nullable = false)
+	@Column(name = "usuario_nome")
+	@NotEmpty(message = "Campo Obrigatório")
+	@Length(min = 5, max = 100, message = "Campo deve ter entre 5 e 100 caracteres")
 	private String nome;
 	
 	@Column(name = "usuario_login")

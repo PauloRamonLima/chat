@@ -23,7 +23,6 @@ public class Endereco implements Serializable{
 	@Column(name = "endereco_id")
 	private Long id;
 	
-	//@Column(name = "endereco_usuario")
 	@OneToOne()
 	private Usuario usuario;
 	

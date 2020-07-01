@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,7 +32,7 @@ public class Conversa implements Serializable{
 	private List<Mensagem> mensagens;
 	
 	@ManyToMany()
-	private List<Usuario> usuario;
+	private List<Usuario> usuarios;
 
 	//Getters e Setters
 	
@@ -53,12 +52,12 @@ public class Conversa implements Serializable{
 		this.mensagens = mensagens;
 	}
 
-	public List<Usuario> getUsuario() {
-		return usuario;
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsuario(List<Usuario> usuario) {
-		this.usuario = usuario;
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
-	
+
 }
