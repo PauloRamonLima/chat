@@ -16,7 +16,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.softmind.sugarbr.model.Conversa;
 import br.com.softmind.sugarbr.service.ConversaService;
-import br.com.softmind.sugarbr.service.UsuarioService;
 
 @RestController
 @RequestMapping("conversas")
@@ -48,8 +47,7 @@ public class ConversaResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Conversa>> buscarTodasAsConversasDeUmUsuario(@PathVariable Long id){
 		List<Conversa> conversasUsuario = conversaService.buscarConversasDeUsuario(id);
-		return ResponseEntity.ok().body(conversasUsuario);
-		
+		return ResponseEntity.ok().body(conversasUsuario);	
 	}
 	
 }

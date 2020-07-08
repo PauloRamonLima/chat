@@ -57,7 +57,7 @@ public class ConversaService {
 	@Transactional
 	public List<Conversa> buscarConversasDeUsuario(Long id){
 		Usuario usuario = usuarioRepository.findById(id).orElse(null);
-		return conversaRepository.findByUsuario(usuario);
+		return conversaRepository.findByUsuarios(usuario);
 	}
 	
 }

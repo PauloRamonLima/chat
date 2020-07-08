@@ -48,6 +48,13 @@ public class UsuarioResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@RequestMapping(value = "/desativar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> desativar(@RequestBody Usuario usuario, @PathVariable Long id) {
+		usuario = usuarioService.buscarPorId(id);
+		usuarioService.desativar(usuario);
+		return ResponseEntity.noContent().build();
+	}
+	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deletar(@PathVariable Long id){
 		usuarioService.deletar(id);

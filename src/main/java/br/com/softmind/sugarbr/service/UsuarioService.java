@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,9 @@ import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
 public class UsuarioService {
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder; 
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -27,19 +31,26 @@ public class UsuarioService {
 	
 	@Transactional
 	public Usuario logar(String login, String senha) {
-		Usuario usuario = usuarioRepository.findByLoginAndSenha(login, senha);
+		Usuario usuario = usuarioRepository.findByLoginAndSenha(login, bCryptPasswordEncoder.encode(senha));
 		return usuario;
 	}
 	
 	@Transactional
 	public Usuario salvar(Usuario usuario) {
 		usuario.setId(null);
+		usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
 		return usuarioRepository.save(usuario);
 	}
 
 	@Transactional
 	public Usuario atualizar(Usuario usuario) throws ObjectNotFoundException {
 		buscarPorId(usuario.getId());
+		return usuarioRepository.save(usuario);
+	}
+	
+	@Transactional
+	public Usuario desativar(Usuario usuario) {
+		usuario.setAtivo(false);
 		return usuarioRepository.save(usuario);
 	}
 

@@ -37,9 +37,6 @@ public class Perfil implements Serializable {
 	@Column(name = "perfil_descricao")
 	private String descricao;
 	
-	@Column(name = "perfil_hobbies")
-	private String hobbies;
-	
 	@Column(name = "perfil_corpo")
 	private String tipoCorpo;
 	
@@ -48,9 +45,6 @@ public class Perfil implements Serializable {
 	
 	@Column(name = "perfil_filhos")
 	private String filhos;
-	
-	@Column(name = "perfil_qtdFilhos")
-	private int qtdFilhos;
 
 	public Perfil() {
 		
@@ -90,14 +84,6 @@ public class Perfil implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public String getHobbies() {
-		return hobbies;
-	}
-
-	public void setHobbies(String hobbies) {
-		this.hobbies = hobbies;
-	}
-
 	public String getTipoCorpo() {
 		return tipoCorpo;
 	}
@@ -120,14 +106,6 @@ public class Perfil implements Serializable {
 
 	public void setFilhos(String filhos) {
 		this.filhos = filhos;
-	}
-
-	public int getQtdFilhos() {
-		return qtdFilhos;
-	}
-
-	public void setQtdFilhos(int qtdFilhos) {
-		this.qtdFilhos = qtdFilhos;
 	}
 
 }
