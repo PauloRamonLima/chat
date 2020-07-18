@@ -3,6 +3,7 @@ package br.com.softmind.sugarbr.model;
 import java.io.File;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -46,6 +47,7 @@ public class Perfil implements Serializable {
 	@Column(name = "perfil_filhos")
 	private String filhos;
 
+	
 	public Perfil() {
 		
 	}
@@ -107,5 +109,5 @@ public class Perfil implements Serializable {
 	public void setFilhos(String filhos) {
 		this.filhos = filhos;
 	}
-
+	
 }

@@ -44,4 +44,10 @@ public class PerfilResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@RequestMapping(value = "/usuario/{id}", method  = RequestMethod.GET)
+	public ResponseEntity<Perfil> buscarPerfilUsuario(@PathVariable Long id){
+		Perfil perfil = perfilService.buscarPerfilDeUsuario(id);
+		return ResponseEntity.ok().body(perfil);
+	}
+	
 }

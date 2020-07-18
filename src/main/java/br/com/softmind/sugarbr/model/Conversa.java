@@ -31,7 +31,7 @@ public class Conversa implements Serializable{
 	@JoinColumn(name = "mensagem_id")
 	private List<Mensagem> mensagens;
 	
-	@ManyToMany()
+	@ManyToMany(mappedBy = "conversas")
 	private List<Usuario> usuarios;
 
 	//Getters e Setters

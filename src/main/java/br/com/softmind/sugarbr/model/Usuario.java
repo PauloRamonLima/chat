@@ -2,9 +2,11 @@ package br.com.softmind.sugarbr.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -75,9 +77,14 @@ public class Usuario implements Serializable {
 			@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "endereco_id", referencedColumnName = "endereco_id") })
 	private Endereco endereco;
+	
+	@Column(name = "perfil_usuario")
+	@ElementCollection(fetch = FetchType.EAGER)
+	private Set<PerfilUsuario> perfisUsuario;
+	
 
 	public Usuario() {
-		
+		//addPerfil(PerfilUsuario.COMUM);
 	}
 	
 	//Getters And Setters
@@ -177,5 +184,16 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public Set<PerfilUsuario> getPerfisUsuario() {
+		return perfisUsuario;
+	}
 
+	public void setPerfilUsuario(Set<PerfilUsuario> perfisUsuario) {
+		this.perfisUsuario = perfisUsuario;
+	}
+	
+	public void addPerfil(PerfilUsuario perfil) {
+		perfisUsuario.add(perfil);
+	}
 }
