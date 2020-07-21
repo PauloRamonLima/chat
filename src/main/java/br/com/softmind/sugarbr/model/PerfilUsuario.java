@@ -1,9 +1,10 @@
 package br.com.softmind.sugarbr.model;
 
-public enum PerfilUsuario {
+public enum PerfilUsuario{
 	
 	GOLD(1, "ROLE_GOLD"),
-	COMUM(2, "ROLE_COMUM");
+	COMUM(2, "ROLE_COMUM"),
+	ADMIN(3, "ROLE_ADMIN");
 	
 	private int id;
 	private String descricao;
@@ -11,6 +12,9 @@ public enum PerfilUsuario {
 	private PerfilUsuario(int id, String descricao) {
 		this.id = id;
 		this.descricao = descricao;
+	}
+
+	private PerfilUsuario() {
 	}
 
 	public int getId() {

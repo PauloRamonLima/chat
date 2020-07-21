@@ -2,14 +2,12 @@ package br.com.softmind.sugarbr.security;
 
 import java.util.Collection;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.softmind.sugarbr.model.Perfil;
 import br.com.softmind.sugarbr.model.PerfilUsuario;
 
 public class UserSS implements UserDetails {
@@ -75,5 +73,8 @@ public class UserSS implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	
+	public boolean hasRole(PerfilUsuario perfilUsuario) {
+		return getAuthorities().contains(new SimpleGrantedAuthority(perfilUsuario.getDescricao()));
+	}
 }

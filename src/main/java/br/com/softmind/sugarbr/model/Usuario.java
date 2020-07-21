@@ -22,8 +22,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 @Table(name = "t.usuario")
@@ -50,6 +48,9 @@ public class Usuario implements Serializable {
 
 	@Column(name = "usuario_idade")
 	private Integer idade;
+	
+	@Column(name = "usuario_email")
+	private String email;
 
 	@Column(name = "usuario_genero")
 	private String genero;
@@ -195,5 +196,17 @@ public class Usuario implements Serializable {
 	
 	public void addPerfil(PerfilUsuario perfil) {
 		perfisUsuario.add(perfil);
+	}
+
+	public void setPerfisUsuario(Set<PerfilUsuario> perfisUsuario) {
+		this.perfisUsuario = perfisUsuario;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

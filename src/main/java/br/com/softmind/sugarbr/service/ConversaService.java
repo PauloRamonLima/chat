@@ -10,6 +10,7 @@ import br.com.softmind.sugarbr.model.Conversa;
 import br.com.softmind.sugarbr.model.Usuario;
 import br.com.softmind.sugarbr.repository.ConversaRepository;
 import br.com.softmind.sugarbr.repository.UsuarioRepository;
+import br.com.softmind.sugarbr.security.UserSS;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
@@ -55,8 +56,12 @@ public class ConversaService {
 	}
 	
 	@Transactional
-	public List<Conversa> buscarConversasDeUsuario(Long id){
-		Usuario usuario = usuarioRepository.findById(id).orElse(null);
+	public List<Conversa> buscarConversasDeUsuario(){
+		UserSS user = UsuarioLogadoService.usuarioAutenticado();
+		if(user == null) {
+			return null;
+		}
+		Usuario usuario = usuarioRepository.findById(user.getId()).orElse(null);
 		return conversaRepository.findByUsuarios(usuario);
 	}
 	

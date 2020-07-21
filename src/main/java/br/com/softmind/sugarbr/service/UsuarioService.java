@@ -10,8 +10,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.softmind.sugarbr.model.PerfilUsuario;
 import br.com.softmind.sugarbr.model.Usuario;
 import br.com.softmind.sugarbr.repository.UsuarioRepository;
+import br.com.softmind.sugarbr.security.UserSS;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
@@ -23,8 +25,15 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	@Transactional
 	public Usuario buscarPorId(Long id) {
+		UserSS user = UsuarioLogadoService.usuarioAutenticado();
+		if(user == null || user.hasRole(PerfilUsuario.ADMIN) && !id.equals(user.getId()) ) {
+			return null;
+		}
 		Usuario usuario = usuarioRepository.findById(id).orElse(null);
 		return usuario;
 	}
@@ -39,6 +48,7 @@ public class UsuarioService {
 	public Usuario salvar(Usuario usuario) {
 		usuario.setId(null);
 		usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
+		emailService.confirmacaoConta(usuario);
 		return usuarioRepository.save(usuario);
 	}
 

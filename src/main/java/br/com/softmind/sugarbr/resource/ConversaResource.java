@@ -44,9 +44,9 @@ public class ConversaResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{coversas}", method = RequestMethod.GET)
 	public ResponseEntity<List<Conversa>> buscarTodasAsConversasDeUmUsuario(@PathVariable Long id){
-		List<Conversa> conversasUsuario = conversaService.buscarConversasDeUsuario(id);
+		List<Conversa> conversasUsuario = conversaService.buscarConversasDeUsuario();
 		return ResponseEntity.ok().body(conversasUsuario);	
 	}
 	

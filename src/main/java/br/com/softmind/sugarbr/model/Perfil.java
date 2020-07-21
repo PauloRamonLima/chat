@@ -41,11 +41,17 @@ public class Perfil implements Serializable {
 	@Column(name = "perfil_corpo")
 	private String tipoCorpo;
 	
-	@Column(name = "perfil_primeiro_encontro")
-	private String primeiroEncontro;
-	
 	@Column(name = "perfil_filhos")
 	private String filhos;
+	
+	@Column(name = "perfil_cabelo")
+	private String cabelo;
+	
+	@Column(name = "perfil_olhos")
+	private String olhos;
+	
+	@Column(name = "perfil_raca")
+	private String raca;
 
 	
 	public Perfil() {
@@ -94,20 +100,36 @@ public class Perfil implements Serializable {
 		this.tipoCorpo = tipoCorpo;
 	}
 
-	public String getPrimeiroEncontro() {
-		return primeiroEncontro;
-	}
-
-	public void setPrimeiroEncontro(String primeiroEncontro) {
-		this.primeiroEncontro = primeiroEncontro;
-	}
-
 	public String getFilhos() {
 		return filhos;
 	}
 
 	public void setFilhos(String filhos) {
 		this.filhos = filhos;
+	}
+
+	public String getCabelo() {
+		return cabelo;
+	}
+
+	public void setCabelo(String cabelo) {
+		this.cabelo = cabelo;
+	}
+
+	public String getOlhos() {
+		return olhos;
+	}
+
+	public void setOlhos(String olhos) {
+		this.olhos = olhos;
+	}
+
+	public String getRaca() {
+		return raca;
+	}
+
+	public void setRaca(String raca) {
+		this.raca = raca;
 	}
 	
 }
