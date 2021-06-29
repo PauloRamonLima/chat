@@ -28,7 +28,7 @@ public class Conversa implements Serializable{
 	private Long id;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mensagem_id")
+	@JoinColumn(name = "mensagem_id", referencedColumnName = "mensagem_id")
 	private List<Mensagem> mensagens;
 	
 	@ManyToMany(mappedBy = "conversas")

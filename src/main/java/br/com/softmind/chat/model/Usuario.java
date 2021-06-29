@@ -73,7 +73,7 @@ public class Usuario implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Conversa> conversas;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "usuario_conversas", joinColumns = {
 			@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "endereco_id", referencedColumnName = "endereco_id") })

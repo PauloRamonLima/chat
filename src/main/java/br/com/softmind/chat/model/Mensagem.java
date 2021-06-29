@@ -5,9 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -30,13 +32,16 @@ public class Mensagem implements Serializable {
 	@Column(name = "mensagem_tipo")
 	private String tipo;
 	
-	@OneToOne()
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "conversa_id", referencedColumnName = "conversa_id")
 	private Conversa conversa;
 	
-	@OneToOne()
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_mensagem_enviada_id", referencedColumnName = "usuario_id")
 	private Usuario usuarioMensagemEnviada;
 	
-	@OneToOne()
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_mensagem_recebida_id", referencedColumnName = "usuario_id")
 	private Usuario usuarioMensagemRecebida;
 	
 	@Column(name = "mensagem_date")
